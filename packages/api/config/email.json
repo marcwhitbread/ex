@@ -1,0 +1,17 @@
+{
+	"local": {
+    "transport": "gmail",
+    "user": "employswell@gmail.com",
+    "password": "7grilsIpdiAdvob"
+  },
+  "test": {
+    "transport": "gmail",
+    "user": "employswell@gmail.com",
+    "password": "7grilsIpdiAdvob"
+  },
+  "production": {
+    "transport": "gmail",
+    "user": "employswell@gmail.com",
+    "password": "7grilsIpdiAdvob"
+  }
+}

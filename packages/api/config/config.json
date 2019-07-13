@@ -1,0 +1,11 @@
+{
+	"local": {
+    "dialect": "mysql",
+    "username": "root2",
+    "password": "local",
+    "database": "ex",
+    "host": "127.0.0.1"
+  },
+  "test": {},
+  "production": {}
+}

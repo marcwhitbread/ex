@@ -1,0 +1,14 @@
+{
+	"local": {
+		"secret": "JQxU4rrevaqQT9ArgxyNAaGwsVhdUgSf",
+		"cookie": { 
+			"domain": "localhost",
+			"httpOnly": true,
+			"secure": false
+		},
+		"resave": false,
+	  "saveUninitialized": false
+	},
+	"test": {},
+	"production": {}
+}
