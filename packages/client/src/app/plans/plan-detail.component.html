@@ -43,7 +43,11 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input formControlName="numberOfTravellers" matInput placeholder="# of Travellers">
+          <mat-select formControlName="numberOfTravellers" placeholder="# of Travellers">
+            <mat-option *ngFor="let traveller of travellers" [value]="traveller">
+              {{traveller}}
+            </mat-option>
+          </mat-select>
         </mat-form-field>
 
         <mat-form-field>
@@ -51,7 +55,8 @@
         </mat-form-field>
 
         <mat-form-field>
-          <input formControlName="spendingLimit" matInput placeholder="Spending Limit">
+          <input formControlName="spendingLimit" matInput placeholder="Spending Limit" mask="coma_separator">
+				  <span matPrefix>$&nbsp;</span>
         </mat-form-field>
 
         <mat-form-field>
@@ -69,13 +74,45 @@
   </mat-sidenav>
   <mat-sidenav-content>
 
-    <mat-card class="no-bg">
+    <mat-card class="mat-elevation-z0 no-bg">
 
       <mat-card-title>Destinations</mat-card-title>
 
+      <form 
+        [formGroup]="filterForm"
+      >
+
+        Filter By:
+        <mat-form-field>
+          <mat-select formControlName="month" placeholder="Month">
+            <mat-option *ngFor="let month of months" [value]="month.value">
+              {{month.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="budget" placeholder="Budget">
+            <mat-option *ngFor="let budget of budgets" [value]="budget">
+              {{budget.viewValue}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <mat-form-field>
+          <mat-select formControlName="travellers" placeholder="# of Travellers">
+            <mat-option [value]="'All'">All</mat-option>
+            <mat-option *ngFor="let traveller of travellers" [value]="traveller">
+              {{traveller}}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      
+      </form>
+
+      <hr />
+
       <table 
         mat-table 
-        [dataSource]="destinations" 
+        [dataSource]="filteredDestinations" 
         class="mat-elevation-z0"
       >
 
@@ -96,7 +133,7 @@
 
         <ng-container matColumnDef="date">
           <th mat-header-cell *matHeaderCellDef> Start/End </th>
-          <td mat-cell *matCellDef="let row"> {{row.start}} to <br />{{row.end}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.start | date : 'MMM dd, yyyy'}} to <br />{{row.end | date : 'MMM dd, yyyy'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="numberOfTravellers">
@@ -111,7 +148,7 @@
 
         <ng-container matColumnDef="spendingLimit">
           <th mat-header-cell *matHeaderCellDef> $ Limit </th>
-          <td mat-cell *matCellDef="let row"> {{row.spendingLimit}} </td>
+          <td mat-cell *matCellDef="let row"> {{row.spendingLimit | currency : undefined : undefined : '1.0'}} </td>
         </ng-container>
 
         <ng-container matColumnDef="notes">
@@ -132,6 +169,14 @@
         <tr mat-row *matRowDef="let row; columns: ['country', 'city', 'address', 'date', 'numberOfTravellers', 'ticketNumber', 'spendingLimit', 'notes', 'actions'];"></tr>
 
       </table>
+
+      <div *ngIf="destinations.length === 0">
+          <strong>You haven't added any destinations yet!</strong>
+      </div>
+
+      <div *ngIf="filteredDestinations.length === 0 && destinations.length > 0">
+        <strong>No destinations meet your filter criteria</strong>
+      </div> 
     
     </mat-card>
 

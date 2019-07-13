@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { CommonModule, DatePipe } from '@angular/common';
+
 
 import { SharedModule } from './../shared/shared.module';
 import { PlansRoutingModule } from './plans-routing.module';
@@ -17,6 +18,7 @@ import { PlanService } from './plan.service';
   ],
   declarations: [PlanDetailComponent],
   providers: [
+    DatePipe,
     PlanService
   ]
 })
