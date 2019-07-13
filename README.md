@@ -3,10 +3,10 @@
 Globally install Lerna project manager (https://github.com/lerna/lerna)
 `npm i lerna -g`
 
-Install all package dependencies
+Install All Packages/Dependencies
 `lerna bootstrap`
 
-Start MySQL and create database
+Start MySQL and Create Database
 `create database ex`
 > Note you can modify the database connection details (db name, user and pass) in: `/packages/api/config/config.json`
 
@@ -20,7 +20,7 @@ Test User/Pass:
 `test1@gmail.com // test`
 `test2@gmail.com // test`
 
-Start client
+Start Client
 `cd packages/client; npm run client`
 
 View Client
