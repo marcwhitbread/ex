@@ -24,7 +24,7 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pug": "^2.0.3",
-    "sequelize": "^3.30.4",
+    "sequelize": "^5.15.1",
     "uuid": "^3.3.2"
   },
   "scripts": {
